@@ -1,0 +1,16 @@
+.category__wraper .category__header .category__header_a .category__header_a_1 .category__header_a_1_1 button {
+  margin-right: -0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.category__wraper .category__header .category__header_a .category__header_a_1 .category__header_a_1_1 button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.category__wraper .category__header .category__header_a .category__header_a_1 category__header_a_1_2_1 h3 {
+  display: flow-root !important;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  margin-top: -0.75rem;
+  margin-bottom: -0.75rem;
+}/*# sourceMappingURL=category.css.map */

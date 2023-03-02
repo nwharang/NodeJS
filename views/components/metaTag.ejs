@@ -1,0 +1,72 @@
+<title><%= pageTitle.toUpperCase() %></title>
+<meta charset="UTF-8" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+<link rel="stylesheet" href="/style/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script>
+  const drawCanvas = (id) => {
+    let canvas = document.querySelector(id);
+
+    let ctx = canvas.getContext("2d");
+
+    var col = function (x, y, r, g, b) {
+      ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+      ctx.fillRect(x, y, 1, 1);
+    };
+    var R = function (x, y, t) {
+      return Math.floor(192 + 64 * Math.cos((x * x - y * y) / 300 + t));
+    };
+
+    var G = function (x, y, t) {
+      return Math.floor(192 + 64 * Math.sin((x * x * Math.cos(t / 4) + y * y * Math.sin(t / 3)) / 300));
+    };
+
+    var B = function (x, y, t) {
+      return Math.floor(192 + 64 * Math.sin(5 * Math.sin(t / 9) + ((x - 100) * (x - 100) + (y - 100) * (y - 100)) / 1100));
+    };
+
+    var t = 0;
+
+    var run = function () {
+      for (let x = 0; x <= 32; x++) {
+        for (let y = 0; y <= 32; y++) {
+          col(x, y, R(x, y, t), G(x, y, t), B(x, y, t));
+        }
+      }
+      t = t + 0.03;
+      window.requestAnimationFrame(run);
+    };
+    run();
+  };
+
+  const getCart = async () => {
+    const data = await fetch("/cart", {
+      method: "GET",
+    }).then((response) => response.text());
+    document.querySelector("#cartWarper").innerHTML = data;
+  };
+
+  const addtoCart = async (e, id) => {
+    const data = await fetch("/addcart", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ input: id }),
+    }).then((response) => response.text());
+  };
+  const increCart = async (e, id) => {
+    const data = await fetch("/updateCart", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ input: id, method: "add" }),
+    }).then((response) => response.text());
+    document.querySelector("#cartWarper").innerHTML = data;
+  };
+  const reduceCart = async (e, id) => {
+    const data = await fetch("/updateCart", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ input: id, method: "reduce" }),
+    }).then((response) => response.text());
+    document.querySelector("#cartWarper").innerHTML = data;
+  };
+</script>

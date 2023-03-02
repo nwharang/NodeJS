@@ -1,0 +1,13 @@
+<section class="container mx-auto mt-3">
+  <h1 class="fs-1 text-primary lh-lg">Shop by Brand</h1>
+  <div class="brand d-flex gap-3 brand" id="brand">
+    <!-- Brand go here -->
+    <% for (brand of brands){%>
+    <div class="col shadow-lg">
+      <img alt="Brand adidas" src="<%= "/assets/brand/" + brand.brand + ".png" %>" />
+      <a href="/category/<%= brand.brand %>"></a>
+    </div>
+    <% } %>
+    <!-- Brand go here -->
+  </div>
+</section>

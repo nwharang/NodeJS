@@ -1,0 +1,136 @@
+<header class="position-relative">
+  <nav class="fixed-top bg-white border-bottom border-primary">
+    <div class="nav__a mx-auto">
+      <div class="nav__b position-relative d-flex align-items-center justify-content-between">
+        <div class="nav__c1 position-absolute top-0 bottom-0 left-0 d-flex align-items-center d-sm-none d-block">
+          <!-- Mobile menu button-->
+          <button type="button" class="nav__c1_1 d-inline-flex align-items-center justify-content-center rounded-3 p-2 text-secondary" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg data-menu-button="show" style="height: 1.5rem; width: 1.5rem" class="d-block menu-bunton-nav" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <svg style="height: 1.5rem; width: 1.5rem" class="d-none menu-bunton-nav" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="nav__c2 d-flex flex-grow-1 align-items-center justify-content-center align-items-sm-stretch justify-content-sm-start">
+          <div class="d-flex flex-shrink-0 align-items-center">
+            <a href="/" class="d-flex bg-dark justify-content-center align-items-center my-2 p-1" style="height: 90%">
+              <img class="d-none d-lg-block w-auto" style="height: 3rem" src="/assets/svg-path.svg" alt="Your Company" />
+              <img class="d-block d-lg-none w-auto" style="height: 3rem" src="/assets/svg-path.svg" alt="Your Company" />
+              <p class="text-white text-end lh-1">Sneaker<br />King</p>
+            </a>
+          </div>
+          <div class="d-none ms-sm-4 d-sm-block">
+            <div class="nav__c2_1 d-flex gx-2">
+              <a href="/" class="fw-semibold px-2 py-2 fs-6 rounded-3 active" aria-current="page">Home</a>
+              <a href="/category/nam" class="fw-semibold px-2 py-2 fs-6 rounded-3">Men</a>
+              <a href="/category/nu" class="fw-semibold px-2 py-2 fs-6 rounded-3">Women</a>
+              <a href="/category/uni" class="fw-semibold px-2 py-2 fs-6 rounded-3">Unisex</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav__c3 position-absolute top-0 bottom-0 end-0 d-flex align-items-center pe-2">
+          <button type="button" onclick="ToggleCartOffCanvas()" class="nav__c3_1 rounded-circle bg-black p-1 text-white position-relative">
+            <span class="sr-only">View notifications</span>
+            <svg style="height: 1.5rem; width: 1.5rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            <span class="position-absolute top-0 start-100 translate-middle badge badge-cart rounded-pill bg-danger mt-1">0</span>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div class="nav__d d-sm-none" id="mobile-menu">
+        <div class="gy-1 px-2 pt-2 pb-3">
+          <a href="/" onclick="clickMenuMobile()" class="bg-dark text-white d-block px-3 py-2 rounded-3" aria-current="page">Home</a>
+
+          <a href="/category/nam" onclick="clickMenuMobile()" class="text-secondary d-block px-3 py-2 rounded-3">Men</a>
+
+          <a href="/category/nu" onclick="clickMenuMobile()" class="text-secondary d-block px-3 py-2 rounded-3">Women</a>
+
+          <a href="/category/uni" onclick="clickMenuMobile()" class="text-secondary d-block px-3 py-2 rounded-3">Unisex</a>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+  </nav>
+  <div class="">
+    <!-- Canvas Drawing -->
+    <div class="canvas-container position-absolute">
+      <canvas id="canvasHeader" height="32px" width="32px"></canvas>
+    </div>
+    <!-- Canvas Drawing -->
+    <!-- Pages Title -->
+
+    <section class="position-relative title__wraper">
+      <div class="position-absolute title__header bottom-50">
+        <h1 class="title__content font-monospace">Sneaker King</h1>
+      </div>
+      <div class="header-slogan">
+        <p class="position-absolute fs-1 text-primary m-4">Feel the world beneath your feet</p>
+        <p class="position-absolute fs-1 text-primary m-4">Feel the world beneath your feet</p>
+      </div>
+    </section>
+    <!-- Pages Title -->
+  </div>
+</header>
+<!-- Cart View -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offCanvasCart" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Cart View</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Table of Cart -->
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-borderless table-sm">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center fw-bold fs-5">Image</th>
+            <th scope="col" class="text-center fw-bold fs-5">Name</th>
+            <th scope="col" class="text-center fw-bold fs-5">Quantity</th>
+            <th scope="col" class="text-center fw-bold fs-5">Control</th>
+          </tr>
+        </thead>
+        <tbody class="text-center" id="cartWarper">
+          <!-- Here go the cart items -->
+        </tbody>
+      </table>
+    </div>
+    <!-- Table of Cart -->
+    <div class="d-flex justify-content-end gap-3">
+      <button type="button" class="p-3 btn btn-dark text-white">Thanh toán</button>
+      <button type="button" class="p-3 btn border" onclick="resetCart()">Reset</button>
+    </div>
+  </div>
+</div>
+<!-- Cart View -->
+<script>
+  let a = document.querySelectorAll(".menu-bunton-nav");
+  let mobileMenuState = false;
+  document.querySelector(".nav__c1_1").addEventListener("click", clickMenuMobile);
+  function clickMenuMobile() {
+    document.querySelector("#mobile-menu").classList.toggle("show");
+    // Open
+    if (a[0].dataset.menuButton === "show") {
+      a[0].dataset.menuButton = "hide";
+      a[0].classList.replace("d-block", "d-none");
+      a[1].classList.replace("d-none", "d-block");
+    } else if (a[0].dataset.menuButton === "hide") {
+      // Close
+      a[0].dataset.menuButton = "show";
+      a[1].classList.replace("d-block", "d-none");
+      a[0].classList.replace("d-none", "d-block");
+    }
+  }
+  async function ToggleCartOffCanvas() {
+    const bsOffcanvas = new bootstrap.Offcanvas("#offCanvasCart");
+    await bsOffcanvas.toggle();
+    getCart();
+  }
+
+  // Cart Set Up
+  let cart = [];
+</script>

@@ -1,0 +1,18 @@
+<% function f_currency(number) { return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(number * 1e3); } %>
+<!-- Render cart items here -->
+<% cart.forEach(e => { %>
+<tr class="">
+  <th class="" scope="row"><img class="img-thumbnail" src="/assets/img/<%= e.id %>.png" alt="<%= e.description%>" /></th>
+  <td class="text-break overflow-hidden">
+    <p><%= e.description%></p>
+    <strong><p><%= f_currency(e.price) %></p></strong>
+  </td>
+  <td class="text-center fw-bold fs-5"><%= e.qty%></td>
+  <td class="text-center fw-bold fs-5">
+    <strong><p><%= f_currency(e.price * e.qty) %></p></strong>
+    <button class="btn btn-danger w-100 mt-3" onclick="increCart(event,'<%= e.id %>')">+</button>
+    <button class="btn btn-danger w-100 mt-3" onclick="reduceCart(event,'<%= e.id %>')">-</button>
+  </td>
+</tr>
+<!-- Render cart items here -->
+<% }) %>

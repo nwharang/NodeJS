@@ -1,0 +1,43 @@
+<% function f_currency(number) { return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(number * 1e3); } %>
+<section class="container mx-auto p-0">
+  <div class="d-flex flex-md-row flex-column shadow-lg bg-body p-2">
+    <div class="flex-none col-md-6 col-12 position-relative p-1" style="flex: none">
+      <img src="/assets/img/<%= products.id %>.png" alt="" class="position-md-absolute w-100 h-100" loading="lazy" style="object-fit: cover; inset: 0" />
+      <button class="position-absolute top-0 end-0 d-flex align-items-center justify-content-center text-secondary border-0 bg-transparent" type="button" aria-label="Like" style="width: 5rem; height: 5rem; flex: none">
+        <svg width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+        </svg>
+      </button>
+    </div>
+    <form class="d-flex flex-column p-xl-2 p-1" style="flex: 1 1 auto">
+      <div class="d-flex flex-column flex-grow-1 justify-content-start">
+        <div class="d-flex flex-wrap align-items-baseline">
+          <h1 class="w-100 d-block mb-1 fs-3 lh-1 text-primary"><%= products.description %></h1>
+          <div class="fs-5 fw-semibold text-secondary" style="flex: 1 1 auto"><%= f_currency(products.price) %></div>
+          <div class="fs-6 lh-base fw-semibold text-uppercase text-secondary">In stock</div>
+        </div>
+        <div>
+          <select class="form-select my-3" aria-label="Default select example">
+            <option selected disabled>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="flex text-primary text-end fs-3 fs-sm-5"><%= products.brand %></div>
+      </div>
+      <div class="align-self-end">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 1.5rem; width: 1.5rem">
+          <path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5V80C0 53.5 21.5 32 48 32H197.5c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+        </svg>
+      </div>
+      <div class="d-flex gap-xl-3 mb-2 fs-6">
+        <div class="d-flex gap-xl-2" style="flex: 1 1 auto">
+          <button class="d-block w-50 text-uppercase fw-semibold border-0 bg-dark text-white py-3" type="submit" style="letter-spacing: 0.05em">Buy now</button>
+          <button class="d-block w-50 text-uppercase fw-semibold border-1 bg-white border-secondary text-primary py-3 border border-dark" type="button" style="letter-spacing: 0.05em" onclick="addtoCart(event , '<%= products.id %>')">Add to bag</button>
+        </div>
+      </div>
+      <p class="fs-5 text-primary">Free shipping on all continental VN orders.</p>
+    </form>
+  </div>
+</section>

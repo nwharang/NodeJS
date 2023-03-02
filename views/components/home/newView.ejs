@@ -1,0 +1,60 @@
+<% function f_currency(number) { return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(number * 1e3); } %>
+<section class="container mx-auto">
+  <h1 class="fs-1 text-primary lh-lg">New Arrival</h1>
+  <div class="scrollArrival position-relative">
+    <button type="button" class="position-absolute h-100 top-0 start-0" id="prevButton" style="width: 2.5rem">
+      <i class="fa-solid fa-circle-chevron-left fs-1"></i>
+    </button>
+    <button type="button" class="position-absolute h-100 top-0 end-0" id="nextButton">
+      <i class="fa-solid fa-circle-chevron-right fs-1"></i>
+    </button>
+    <div class="row flex-nowrap gap-3 pt-3 px-1 pb-5 mx-5 newArrival" id="newArrival" style="overflow: hidden">
+      <!-- Product go here -->
+      <% for (item of newArrivals) {%>
+      <div class="col-custom d-flex flex-column p-0 shadow rounded-4 bg-white position-relative">
+        <a class="position-absolute w-100 h-100 top-0 left-0" href="/product/<%= item.id %>"></a>
+        <div class="w-100 rounded-top position-relative">
+          <img class="h-100 w-100 rounded-bottom rounded-4 border" src="/assets/img/<%= item.id %>.png" alt="Giày thể thao Nam Supernova 2 Shoes FW22-GW87" />
+          <div class="position-absolute bottom-0 start-0 w-100 d-flex z-20">
+            <a class="bg-dark text-white p-3 fw-semibold flex-grow-1 border-end text-center" href="/product/<%= item.id %>">Detail</a>
+            <button class="bg-dark text-white p-3 fw-semibold flex-grow-1" type="button" onclick="addtoCart(event , '<%= item.id %>')">Add To Cart</button>
+          </div>
+        </div>
+        <div class="mt-1 p-2 d-flex flex-column flex-grow-1 justify-content-center align-items-center">
+          <h5 class="col text-decoration-none">
+            <p class="fw-bold text-center"><%= item.description %></p>
+          </h5>
+          <div class="row mt-3 justify-content-between w-100">
+            <p class="col mt-0 d-flex justify-content-start align-items-end text-secondary pe-0">adidas</p>
+            <p class="col font-medium d-flex justify-content-end align-items-end text-primary text-end ps-0"><%= f_currency(item.price) %></p>
+          </div>
+        </div>
+      </div>
+      <% }%>
+      <!-- Product go here -->
+    </div>
+  </div>
+</section>
+<script>
+  orinObject = document.querySelector("#newArrival").firstElementChild;
+  document.querySelector("#nextButton").addEventListener("click", () => {
+    if (orinObject.nextElementSibling) {
+      orinObject.nextElementSibling.scrollIntoView({
+        block: "nearest",
+        inline: "start",
+        behavior: "smooth",
+      });
+      orinObject = orinObject.nextElementSibling;
+    }
+  });
+  document.querySelector("#prevButton").addEventListener("click", () => {
+    if (orinObject.previousElementSibling) {
+      orinObject.previousElementSibling.scrollIntoView({
+        block: "nearest",
+        inline: "start",
+        behavior: "smooth",
+      });
+      orinObject = orinObject.previousElementSibling;
+    }
+  });
+</script>

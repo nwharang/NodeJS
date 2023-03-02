@@ -1,0 +1,25 @@
+<%- include('../components/home/newView.ejs') %>
+<section class="container mx-auto">
+  <h1 class="fs-1 text-primary lh-lg">Shop by Category</h1>
+  <div class="row gap-3 gap-md-3 gap-lg-4 m-1 category">
+    <div class="col position-relative shadow-lg">
+      <img src="/assets/men.jpg" alt="Men Sneaker Category" />
+      <a href="/category/nam" onclick="route()" class="d-flex w-100 h-100 position-absolute top-0 start-0 justify-content-center align-items-center">
+        <p>Men</p>
+      </a>
+    </div>
+    <div class="col position-relative shadow-lg">
+      <img src="/assets/women.jpg" alt="Women Sneaker Category" />
+      <a href="/category/nu" onclick="route()" class="d-flex w-100 h-100 position-absolute top-0 start-0 justify-content-center align-items-center">
+        <p>Women</p>
+      </a>
+    </div>
+    <div class="col position-relative shadow-lg">
+      <img src="/assets/uni.jpg" alt="Unisex Sneaker Category" />
+      <a href="/category/uni" onclick="route()" class="d-flex w-100 h-100 position-absolute top-0 start-0 justify-content-center align-items-center">
+        <p>UniSex</p>
+      </a>
+    </div>
+  </div>
+</section>
+<%- include('../components/home/brandView.ejs') %>
